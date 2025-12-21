@@ -1,0 +1,84 @@
+:root {
+  --bg: #f4f6fb;
+  --fg: #111;
+  --card: rgba(255,255,255,0.65);
+  --blur: blur(14px);
+}
+
+[data-theme="dark"] {
+  --bg: #0b0e14;
+  --fg: #e6e6e6;
+  --card: rgba(20,20,30,0.65);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  animation: fadeup 0.6s ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.link {
+  text-align: center;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+@keyframes fadeup {
+  from { opacity: 0; transform: translatey(20px); }
+  to { opacity: 1; transform: translatey(0); }
+}

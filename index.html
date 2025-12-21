@@ -1,2 +1,36 @@
-<h1>if you see this, it's working</h1>
-<p>start of 2026 i will update this</p>
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>pxvault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <header class="topbar">
+    <h1>pxvault</h1>
+    <div class="controls">
+      <button id="langToggle">pt</button>
+      <button id="themeToggle">dark</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-i18n="about_title">sobre mim</h2>
+      <p data-i18n="about_text">
+        desenvolvedor focado em web, sistemas e experimentação.
+      </p>
+    </section>
+
+    <section class="grid">
+      <a class="card link" href="https://github.pxvault.site" data-i18n="github">github</a>
+      <a class="card link" href="https://files.pxvault.site" data-i18n="files">files</a>
+    </section>
+  </main>
+
+  <script src="src/scripts/main.js"></script>
+</body>
+</html>
