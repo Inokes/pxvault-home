@@ -1,84 +1,94 @@
 :root {
-  --bg: #f4f6fb;
-  --fg: #111;
-  --card: rgba(255,255,255,0.65);
-  --blur: blur(14px);
-}
-
-[data-theme="dark"] {
-  --bg: #0b0e14;
-  --fg: #e6e6e6;
-  --card: rgba(20,20,30,0.65);
+  --bg: #0c1220;
+  --glass: rgba(30,45,70,0.6);
+  --border: rgba(255,255,255,0.15);
+  --text: #e6eaf0;
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: system-ui, sans-serif;
 }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
+  background: #0c1220;
+  color: var(--text);
   overflow-x: hidden;
 }
 
-canvas {
+/* canvas background */
+#life {
   position: fixed;
   inset: 0;
   z-index: -1;
 }
 
+/* header */
 .topbar {
+  height: 64px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: 0 1.5rem;
+  background: rgba(20,30,50,0.6);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
 }
 
-.controls {
+.profile {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-button {
-  background: var(--card);
-  backdrop-filter: var(--blur);
-  border: none;
-  padding: 8px 14px;
+.avatar {
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
-  color: var(--fg);
-  cursor: pointer;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border);
 }
 
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* content */
 .container {
   max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  gap: 2.5rem;
 }
 
 .card {
-  background: var(--card);
-  backdrop-filter: var(--blur);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  animation: fadeup 0.6s ease;
+  background: rgba(30, 40, 65, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  padding: 2rem;
 }
 
+.card h2 {
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: #dce2ee;
+}
+
+/* links */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
 }
 
 .link {
-  text-align: center;
   text-decoration: none;
-  color: var(--fg);
-}
-
-@keyframes fadeup {
-  from { opacity: 0; transform: translatey(20px); }
-  to { opacity: 1; transform: translatey(0); }
+  color: var(--text);
 }

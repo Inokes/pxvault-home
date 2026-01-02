@@ -1,70 +1,66 @@
-const themeToggle = document.getElementById("themeToggle")
-const langToggle = document.getElementById("langToggle")
-const root = document.documentElement
+const canvas = document.getElementById("life");
+const ctx = canvas.getContext("2d");
 
-let theme = localStorage.getItem("theme") || "light"
-let lang = localStorage.getItem("lang") || "pt"
-
-const translations = {
-  pt: {
-    about_title: "sobre mim",
-    about_text: "desenvolvedor focado em web, sistemas e experimentação.",
-    github: "github",
-    files: "files"
-  },
-  en: {
-    about_title: "about me",
-    about_text: "developer focused on web, systems and experimentation.",
-    github: "github",
-    files: "files"
-  }
-}
-
-function applyLang() {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    el.textContent = translations[lang][el.dataset.i18n]
-  })
-  langToggle.textContent = lang
-}
-
-themeToggle.onclick = () => {
-  theme = theme === "dark" ? "light" : "dark"
-  root.dataset.theme = theme
-  localStorage.setItem("theme", theme)
-}
-
-langToggle.onclick = () => {
-  lang = lang === "pt" ? "en" : "pt"
-  localStorage.setItem("lang", lang)
-  applyLang()
-}
-
-root.dataset.theme = theme
-applyLang()
-
-// partículas simples
-const c = document.getElementById("particles")
-const ctx = c.getContext("2d")
-let w, h, p = []
+let w, h, cols, rows;
+const cellSize = 6;
+let grid = [];
+let next = [];
 
 function resize() {
-  w = c.width = window.innerWidth
-  h = c.height = window.innerHeight
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+  cols = Math.floor(w / cellSize);
+  rows = Math.floor(h / cellSize);
+  init();
 }
-window.onresize = resize
-resize()
 
-for (let i = 0; i < 80; i++)
-  p.push({ x: Math.random()*w, y: Math.random()*h, v: Math.random()+0.3 })
+window.addEventListener("resize", resize);
 
-function draw() {
-  ctx.clearRect(0,0,w,h)
-  p.forEach(pt => {
-    pt.y += pt.v
-    if (pt.y > h) pt.y = 0
-    ctx.fillStyle = "rgba(150,150,150,0.3)"
-    ctx.fillRect(pt.x, pt.y, 2, 2)
-  })
-  requestAnimationFrame(draw)
+function init() {
+  grid = new Array(cols).fill(0).map(() =>
+    new Array(rows).fill(0).map(() => Math.random() > 0.85 ? 1 : 0)
+  );
+  next = new Array(cols).fill(0).map(() => new Array(rows).fill(0));
 }
-draw()
+
+function countNeighbors(x, y) {
+  let sum = 0;
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
+      if (i === 0 && j === 0) continue;
+      const col = (x + i + cols) % cols;
+      const row = (y + j + rows) % rows;
+      sum += grid[col][row];
+    }
+  }
+  return sum;
+}
+
+function update() {
+  ctx.clearRect(0, 0, w, h);
+
+  for (let x = 0; x < cols; x++) {
+    for (let y = 0; y < rows; y++) {
+      const state = grid[x][y];
+      const neighbors = countNeighbors(x, y);
+
+      if (state === 0 && neighbors === 3) next[x][y] = 1;
+      else if (state === 1 && (neighbors < 2 || neighbors > 3)) next[x][y] = 0;
+      else next[x][y] = state;
+
+      if (next[x][y]) {
+        ctx.fillStyle = "rgba(120,180,255,0.8)";
+        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+
+  const temp = grid;
+  grid = next;
+  next = temp;
+
+  requestAnimationFrame(update);
+}
+
+resize();
+update();
