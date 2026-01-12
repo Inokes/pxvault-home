@@ -1,7 +1,7 @@
 const canvas = document.getElementById("life");
 const ctx = canvas.getContext("2d");
 //controls size
-const scale = 4; // low = lag
+const scale = 8; // low = lag
 const chaos = 0.002; // lower = boring but not chaotic
 
 let cols, rows, grid;
