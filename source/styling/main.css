@@ -1,0 +1,243 @@
+@font-face {
+  font-family: pixel;
+  src: local("press start 2p"), local("vt323"), local("monospace");
+}
+
+:root {
+  --bg: #1d2021;
+  --fg: #ebdbb2;
+  --accent: #fabd2f;
+  --muted: #83a598;
+}
+
+* {
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: pixel, monospace;
+  overflow: hidden;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.topbar {
+  position: relative;
+  z-index: 2;
+  padding: 12px clamp(16px, 5vw, 80px);
+}
+
+.topbar nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.topbar button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.topbar button.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.topbar button:hover {
+  color: var(--accent);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  padding: clamp(16px, 5vw, 80px);
+}
+
+section {
+  max-width: 90ch;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--accent);
+}
+
+p {
+  font-size: clamp(0.8rem, 2.2vw, 1rem);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.lang {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.lang button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.lang button.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.disclaimer {
+  border: 1px solid var(--muted);
+  padding: 1.5rem;
+  max-width: 70ch;
+  position: relative;
+}
+
+.countdown {
+  margin-top: 1rem;
+  color: var(--accent);
+}
+
+.disclaimer-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.disclaimer-actions button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.disclaimer-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.disclaimer-actions button:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* glitch effect */
+
+.glitch h1 {
+  position: relative;
+}
+
+.glitch h1::before,
+.glitch h1::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch h1::before {
+  animation: glitch1 0.3s infinite linear alternate-reverse;
+  color: #fb4934;
+}
+
+.glitch h1::after {
+  animation: glitch2 0.25s infinite linear alternate-reverse;
+  color: #83a598;
+}
+
+@keyframes glitch1 {
+  0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -1px); }
+  100% { clip-path: inset(20% 0 0 0); transform: translate(2px, 1px); }
+}
+
+@keyframes glitch2 {
+  0% { clip-path: inset(60% 0 0 0); transform: translate(2px, 0); }
+  100% { clip-path: inset(0 0 40% 0); transform: translate(-2px, 0); }
+}
+
+.chaos-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.chaos-controls input {
+  width: 4rem;
+  margin: 0 0.3rem;
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--fg);
+  font-family: inherit;
+}
+
+.chaos-controls button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.chaos-controls button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.chaos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.chaos-item {
+  border: 1px solid var(--muted);
+  padding: 0.75rem;
+}
+
+.chaos-item .name {
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+}
+
+.chaos-item a {
+  font-size: 0.65rem;
+  word-break: break-all;
+}

@@ -1,0 +1,17 @@
+{
+  "generated": "2026-01-12T03:28:22.183Z",
+  "pages": [
+    {
+      "id": "home",
+      "file": "home.md"
+    },
+    {
+      "id": "me",
+      "file": "me.md"
+    },
+    {
+      "id": "plsdontclickme",
+      "file": "plsdontclickme.md"
+    }
+  ]
+}
