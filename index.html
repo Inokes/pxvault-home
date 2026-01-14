@@ -1,3 +1,13 @@
+<!--
+file: index.html
+what this does:
+- main html shell for the entire site
+- mounts loader, router, canvas background
+- topbar now includes a profile picture on the far left
+this file should stay dumb :)
+＼(^^)／
+-->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,18 +20,30 @@
 
 <body>
 
+<div id="loader-screen">
+  <div class="loader-box">
+    <h1>loading pxvault</h1>
+    <pre id="loader-log"></pre>
+  </div>
+</div>
+
 <canvas id="life"></canvas>
 
 <header class="topbar">
-  <nav></nav>
+  <nav>
+    <img
+      src="source/assets/photos/profile.png"
+      alt="profile"
+      class="profile-pic"
+    >
+  </nav>
 </header>
 
 <main>
   <section id="content"></section>
 </main>
 
-<script src="source/scripts/lifegame.js"></script>
-<script src="source/scripts/router.js"></script>
+<script type="module" src="source/scripts/loader.js"></script>
 
 </body>
 </html>

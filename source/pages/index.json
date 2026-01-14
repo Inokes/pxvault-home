@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-12T17:02:46.702Z",
+  "generated": "2026-01-14T01:11:32.603Z",
   "pages": [
     {
       "id": "behind-the-curtains",
@@ -8,6 +8,170 @@
     {
       "id": "home",
       "file": "home.md"
+    },
+    {
+      "id": "update1",
+      "file": "update1.md"
+    }
+  ],
+  "tree": [
+    {
+      "type": "dir",
+      "name": ".github",
+      "path": ".github",
+      "children": [
+        {
+          "type": "dir",
+          "name": "workflows",
+          "path": ".github/workflows",
+          "children": [
+            {
+              "type": "file",
+              "name": "static.yml",
+              "path": ".github/workflows/static.yml"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "CNAME",
+      "path": "CNAME"
+    },
+    {
+      "type": "file",
+      "name": "ftree.js",
+      "path": "ftree.js"
+    },
+    {
+      "type": "file",
+      "name": "index.html",
+      "path": "index.html"
+    },
+    {
+      "type": "dir",
+      "name": "source",
+      "path": "source",
+      "children": [
+        {
+          "type": "dir",
+          "name": "assets",
+          "path": "source/assets",
+          "children": [
+            {
+              "type": "dir",
+              "name": "audio",
+              "path": "source/assets/audio",
+              "children": []
+            },
+            {
+              "type": "dir",
+              "name": "photos",
+              "path": "source/assets/photos",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "profile.png",
+                  "path": "source/assets/photos/profile.png"
+                }
+              ]
+            },
+            {
+              "type": "dir",
+              "name": "video",
+              "path": "source/assets/video",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "pages",
+          "path": "source/pages",
+          "children": [
+            {
+              "type": "file",
+              "name": "behind-the-curtains.md",
+              "path": "source/pages/behind-the-curtains.md"
+            },
+            {
+              "type": "file",
+              "name": "home.md",
+              "path": "source/pages/home.md"
+            },
+            {
+              "type": "file",
+              "name": "index.json",
+              "path": "source/pages/index.json"
+            },
+            {
+              "type": "file",
+              "name": "update1.md",
+              "path": "source/pages/update1.md"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "scripts",
+          "path": "source/scripts",
+          "children": [
+            {
+              "type": "file",
+              "name": "chaos.js",
+              "path": "source/scripts/chaos.js"
+            },
+            {
+              "type": "file",
+              "name": "disclaimer.js",
+              "path": "source/scripts/disclaimer.js"
+            },
+            {
+              "type": "file",
+              "name": "files.js",
+              "path": "source/scripts/files.js"
+            },
+            {
+              "type": "file",
+              "name": "lifegame.js",
+              "path": "source/scripts/lifegame.js"
+            },
+            {
+              "type": "file",
+              "name": "loader.js",
+              "path": "source/scripts/loader.js"
+            },
+            {
+              "type": "file",
+              "name": "markdown.js",
+              "path": "source/scripts/markdown.js"
+            },
+            {
+              "type": "file",
+              "name": "router.js",
+              "path": "source/scripts/router.js"
+            },
+            {
+              "type": "file",
+              "name": "state.js",
+              "path": "source/scripts/state.js"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "styling",
+          "path": "source/styling",
+          "children": [
+            {
+              "type": "file",
+              "name": "main.css",
+              "path": "source/styling/main.css"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -241,3 +241,168 @@ a:hover {
   font-size: 0.65rem;
   word-break: break-all;
 }
+
+/* loader screen */
+
+#loader-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.4s ease;
+}
+
+.loader-box {
+  border: 1px solid var(--muted);
+  padding: 1.5rem;
+  max-width: 60ch;
+}
+
+.loader-box h1 {
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+#loader-log {
+  font-size: 0.6rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  color: var(--muted);
+}
+
+/* centered markdown with scroll */
+
+main {
+  align-items: center;
+  justify-items: center;
+}
+
+#content {
+  max-width: 90ch;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* rofi / launchpad pages overlay */
+
+.pages-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9998;
+  display: grid;
+  place-items: center;
+}
+
+.pages-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  max-width: 80vw;
+}
+
+.pages-box button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pages-box button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/*
+what the fuck am i doing will this reach 1k lines
+*/
+
+.file-explorer {
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.file-item {
+  margin-left: 1rem;
+}
+
+.file-item .dir {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.file-item .children {
+  margin-left: 1rem;
+  border-left: 1px dashed var(--muted);
+  padding-left: 0.5rem;
+}
+
+/*
+will i keep rawdogging changes to this
+*/
+
+.file {
+  cursor: pointer;
+}
+
+.file:hover {
+  color: var(--accent);
+}
+
+.file-viewer {
+  position: relative;
+}
+
+.file-viewer pre {
+  font-size: 0.65rem;
+  line-height: 1.5;
+  max-height: 65vh;
+  overflow: auto;
+  border: 1px solid var(--muted);
+  padding: 1rem;
+}
+
+.download-btn {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  border: 1px solid var(--muted);
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+  background: var(--bg);
+  z-index: 5;
+}
+
+.download-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+.profile-pic {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+  border: 1px solid var(--muted);
+  margin-right: 0.75rem;
+}
+
+/* profile image inside markdown (home page) */
+#content img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--muted);
+  image-rendering: pixelated;
+}

@@ -1,10 +1,24 @@
+/*
+file: ftree.js
+what this does:
+- scans the entire repository
+- generates source/pages/index.json
+- collects:
+  - all markdown pages (for the router)
+  - full file tree of the site
+- ignores .git completely
+this is run locally with node.js before deployment
+＼(^^)／
+*/
+
 const fs = require("fs");
 const path = require("path");
 
-const base = path.join(__dirname, "source/pages");
-const out = path.join(base, "index.json");
+const root = __dirname;
+const pagesBase = path.join(root, "source/pages");
+const out = path.join(pagesBase, "index.json");
 
-function walk(dir, prefix = "") {
+function walkPages(dir, prefix = "") {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let pages = [];
 
@@ -15,7 +29,7 @@ function walk(dir, prefix = "") {
     const rel = path.join(prefix, e.name);
 
     if (e.isDirectory()) {
-      pages = pages.concat(walk(full, rel));
+      pages = pages.concat(walkPages(full, rel));
     } else if (e.isFile() && e.name.endsWith(".md")) {
       pages.push({
         id: rel.replace(/\.md$/, "").replace(/\\/g, "/"),
@@ -27,10 +41,40 @@ function walk(dir, prefix = "") {
   return pages;
 }
 
+function walkTree(dir, prefix = "") {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let tree = [];
+
+  for (const e of entries) {
+    if (e.name === ".git") continue;
+
+    const full = path.join(dir, e.name);
+    const rel = path.join(prefix, e.name).replace(/\\/g, "/");
+
+    if (e.isDirectory()) {
+      tree.push({
+        type: "dir",
+        name: e.name,
+        path: rel,
+        children: walkTree(full, rel)
+      });
+    } else if (e.isFile()) {
+      tree.push({
+        type: "file",
+        name: e.name,
+        path: rel
+      });
+    }
+  }
+
+  return tree;
+}
+
 const index = {
   generated: new Date().toISOString(),
-  pages: walk(base)
+  pages: walkPages(pagesBase),
+  tree: walkTree(root)
 };
 
 fs.writeFileSync(out, JSON.stringify(index, null, 2));
-console.log("index.json gerado");
+console.log("index.json generated");

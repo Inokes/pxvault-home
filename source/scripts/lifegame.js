@@ -1,7 +1,16 @@
+/*
+file: lifegame.js
+what this does:
+- renders a chaotic background using conway's game of life
+- purely visual, never critical
+safe to disable if performance dies :)
+(⌐■_■)
+*/
+
 const canvas = document.getElementById("life");
 const ctx = canvas.getContext("2d");
 //controls size
-const scale = 8; // low = lag
+const scale = 16; // low = lag
 const chaos = 0.002; // lower = boring but not chaotic
 
 let cols, rows, grid;
