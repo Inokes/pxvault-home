@@ -68,9 +68,9 @@ async function preloadPages() {
     await loadModule("./router.js");
 
     // optional features
-    await loadModule("./chaos.js", true);
-    await loadModule("./disclaimer.js", true);
-    await loadModule("./lifegame.js", true);
+    // deprecated too lmao await loadModule("./chaos.js", true);
+    // deprecated await loadModule("./disclaimer.js", true);
+    await loadModule("./matrix.js", true);
 
     await preloadPages();
 

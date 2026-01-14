@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-14T01:11:32.603Z",
+  "generated": "2026-01-14T17:47:01.496Z",
   "pages": [
     {
       "id": "behind-the-curtains",
@@ -12,6 +12,10 @@
     {
       "id": "update1",
       "file": "update1.md"
+    },
+    {
+      "id": "update2",
+      "file": "update2.md"
     }
   ],
   "tree": [
@@ -72,6 +76,11 @@
               "children": [
                 {
                   "type": "file",
+                  "name": "oldprofile.png",
+                  "path": "source/assets/photos/oldprofile.png"
+                },
+                {
+                  "type": "file",
                   "name": "profile.png",
                   "path": "source/assets/photos/profile.png"
                 }
@@ -109,6 +118,11 @@
               "type": "file",
               "name": "update1.md",
               "path": "source/pages/update1.md"
+            },
+            {
+              "type": "file",
+              "name": "update2.md",
+              "path": "source/pages/update2.md"
             }
           ]
         },
@@ -134,11 +148,6 @@
             },
             {
               "type": "file",
-              "name": "lifegame.js",
-              "path": "source/scripts/lifegame.js"
-            },
-            {
-              "type": "file",
               "name": "loader.js",
               "path": "source/scripts/loader.js"
             },
@@ -146,6 +155,11 @@
               "type": "file",
               "name": "markdown.js",
               "path": "source/scripts/markdown.js"
+            },
+            {
+              "type": "file",
+              "name": "matrix.js",
+              "path": "source/scripts/matrix.js"
             },
             {
               "type": "file",

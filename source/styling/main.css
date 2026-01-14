@@ -29,6 +29,8 @@ canvas {
   position: fixed;
   inset: 0;
   z-index: 0;
+  opacity: 0.55;
+  image-rendering: pixelated;
 }
 
 .topbar {
@@ -405,4 +407,31 @@ will i keep rawdogging changes to this
   margin-bottom: 1rem;
   border: 1px solid var(--muted);
   image-rendering: pixelated;
+}
+
+/* pixelated background layer */
+
+#content,
+.pages-box,
+.disclaimer,
+.file-viewer,
+.file-explorer {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(29, 32, 33, 0.92),
+      rgba(29, 32, 33, 0.92) 2px,
+      rgba(29, 32, 33, 0.88) 2px,
+      rgba(29, 32, 33, 0.88) 4px
+    );
+  border: 1px solid var(--muted);
+}
+
+#content {
+  position: relative;
+  z-index: 2;
+}
+
+#content {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
 }
