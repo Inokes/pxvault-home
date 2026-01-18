@@ -1,0 +1,208 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <main class="page active">
+    <h1>pxvault – recent changes log</h1>
+<p>this file documents <strong>what i actually changed</strong>, in order, starting from the first real version and ending at the current state.</p>
+<p>this is not a README.
+this is a brain dump.</p>
+<hr>
+<h2>initial state</h2>
+<p>at the beginning, this site was:</p>
+<ul>
+<li>a single <code>index.html</code></li>
+<li>hardcoded navigation</li>
+<li>raw html content</li>
+<li>no build step</li>
+<li>no structure</li>
+<li>just vibes</li>
+</ul>
+<p>i quickly realized this would become unmaintainable the moment i added more than one page.</p>
+<hr>
+<h2>moving content to markdown</h2>
+<p>the first real architectural change:</p>
+<ul>
+<li>all page content moved to markdown files</li>
+<li>markdown lives in <code>source/pages/</code></li>
+<li>html became just a shell</li>
+<li>javascript handles rendering</li>
+</ul>
+<p>why:</p>
+<ul>
+<li>faster to write</li>
+<li>less boilerplate</li>
+<li>easier to reorganize later</li>
+</ul>
+<p>this introduced a <strong>custom markdown parser</strong>, intentionally minimal and fragile.</p>
+<hr>
+<h2>ftree.js and dynamic pages</h2>
+<p>next step:</p>
+<ul>
+<li>wrote <code>ftree.js</code></li>
+<li>runs locally with node.js</li>
+<li>scans <code>source/pages/</code></li>
+<li>generates <code>index.json</code> with all markdown files</li>
+<li>no page list is hardcoded anywhere</li>
+</ul>
+<p>result:</p>
+<ul>
+<li>adding a page = dropping a <code>.md</code> file</li>
+<li>navigation updates automatically</li>
+<li>no manual syncing</li>
+</ul>
+<p>this is the core of the site now.</p>
+<hr>
+<h2>router rewrite</h2>
+<p>initial router:</p>
+<ul>
+<li>buttons in topbar</li>
+<li>clicking replaced content</li>
+<li>hash-based navigation</li>
+</ul>
+<p>problems:</p>
+<ul>
+<li>messy state</li>
+<li>growing complexity</li>
+<li>disclaimer logic got tangled</li>
+</ul>
+<p>solution:</p>
+<ul>
+<li>split logic into modules</li>
+<li>router only handles navigation</li>
+<li>state lives in <code>state.js</code></li>
+</ul>
+<p>navigation now:</p>
+<ul>
+<li>home always loads first</li>
+<li>pages button opens a launcher overlay</li>
+<li>page switching never reloads the site</li>
+</ul>
+<hr>
+<h2>loader system</h2>
+<p>big structural change:</p>
+<ul>
+<li>added <code>loader.js</code></li>
+<li>site now has a boot process</li>
+<li>modules are loaded explicitly</li>
+<li>optional features can fail safely</li>
+</ul>
+<p>loader does:</p>
+<ul>
+<li>logs what loads</li>
+<li>logs what fails</li>
+<li>preloads markdown pages</li>
+<li>hides loading screen only when ready</li>
+</ul>
+<p>if something breaks:</p>
+<ul>
+<li>site still runs</li>
+<li>features just disable themselves</li>
+</ul>
+<p>this made debugging <strong>much easier</strong>.</p>
+<hr>
+<h2>disclaimer system</h2>
+<p>implemented a forced disclaimer:</p>
+<ul>
+<li>blocks all content</li>
+<li>shows glitch effect</li>
+<li>enforces a countdown</li>
+<li>cannot be skipped</li>
+</ul>
+<p>features:</p>
+<ul>
+<li>&quot;boss fight&quot; timer</li>
+<li>accept button unlocks content</li>
+<li>state stored in memory only</li>
+</ul>
+<p>this is intentionally annoying.</p>
+<hr>
+<h2>chaos links feature</h2>
+<p>instead of redirecting away:</p>
+<ul>
+<li>disclaimer has a second option</li>
+<li>shows 250 real, unrelated links</li>
+<li>wikipedia, archive.org, fandoms, random nonsense</li>
+<li>grid layout</li>
+<li>fully client-side</li>
+<li>nothing is saved</li>
+</ul>
+<p>controls:</p>
+<ul>
+<li>choose how many links to show</li>
+<li>regenerate</li>
+<li>emergency google button</li>
+</ul>
+<p>this exists purely to waste time.</p>
+<hr>
+<h2>game of life background</h2>
+<p>visual-only feature:</p>
+<ul>
+<li>canvas fills the screen</li>
+<li>conway’s game of life</li>
+<li>random initial state</li>
+<li>constant noise injection</li>
+</ul>
+<p>purpose:</p>
+<ul>
+<li>looks alive</li>
+<li>hides layout imperfections</li>
+<li>gives terminal-wallpaper energy</li>
+</ul>
+<p>safe to disable.
+never critical.</p>
+<hr>
+<h2>styling direction</h2>
+<p>design rules i followed:</p>
+<ul>
+<li>pixel fonts only</li>
+<li>gruvbox hard colors</li>
+<li>no rounded corners</li>
+<li>no shadows</li>
+<li>no animations unless glitchy</li>
+<li>buttons should feel like cli tools</li>
+</ul>
+<p>everything should look:</p>
+<ul>
+<li>slightly broken</li>
+<li>intentional</li>
+<li>hostile to modern ui expectations</li>
+</ul>
+<hr>
+<h2>current architecture summary</h2>
+<ul>
+<li>static site</li>
+<li>no framework</li>
+<li>no bundler</li>
+<li>no backend</li>
+<li>markdown as content</li>
+<li>js as glue</li>
+<li>css as attitude</li>
+</ul>
+<p>everything is replaceable.
+nothing is sacred.</p>
+<hr>
+<h2>next things i want to do</h2>
+<p>things that make sense next:</p>
+<ul>
+<li>markdown tabs or sections</li>
+<li>better code block styling</li>
+<li>syntax highlighting (manual or minimal)</li>
+<li>page metadata (date, tags)</li>
+<li>blog-style chronology</li>
+<li>search (probably terrible on purpose)</li>
+<li>keyboard navigation everywhere</li>
+<li>optional wasm experiments</li>
+<li>breaking this again</li>
+</ul>
+<hr>
+<h1>fin</h1>
+<p>so this was my ted talk and be sure i did NOT say everything i wanted to say here. the rage i felt making this is nothing than all the rage the world has felt</p>
+
+  </main>
+</body>
+</html>

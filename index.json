@@ -1,0 +1,22 @@
+{
+  "files": [
+    "css/main.css",
+    "html/behind-the-curtains.html",
+    "html/home.html",
+    "html/update1.html",
+    "html/update2.html",
+    "html/update3.html",
+    "html/website-2.0.html",
+    "index.html",
+    "index.json",
+    "md/behind-the-curtains.md",
+    "md/home.md",
+    "md/update1.md",
+    "md/update2.md",
+    "md/update3.md",
+    "md/website-2.0.md",
+    "scripts/main.js",
+    "scripts/marked.js",
+    "setup.js"
+  ]
+}

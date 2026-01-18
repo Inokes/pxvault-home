@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>pxwo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="scripts/main.js"></script>
+</head>
+<body>
+
+  <header class="top-bar">
+    <span class="title">pxwo</span>
+
+    <button id="theme-toggle" aria-label="toggle dark mode">
+      🌙
+    </button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar">
+      <button data-page="about" class="active">about</button>
+      <button data-page="skills">skills</button>
+      <button data-page="pages">pages</button>
+    </aside>
+
+    <main id="content">
+      <section id="about" class="page active">
+        <h1>about me</h1>
+        <p>self titled useless retard who swears too much<br></p>
+      </section>
+
+      <section id="skills" class="page">
+        <h1>skills</h1>
+        <ul>
+          <li>c / c++</li>
+          <li>python</li>
+          <li>javascript</li>
+          <li>react / tailwind</li>
+          <li>linux</li>
+        </ul>
+      </section>
+
+      <section id="pages" class="page">
+        <h1>pages</h1>
+        <ul id="pages-list"></ul>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
