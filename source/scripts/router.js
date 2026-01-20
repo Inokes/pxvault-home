@@ -1,13 +1,3 @@
-/*
-file: router.js
-what this does:
-- handles navigation and page loading
-- adds fixed home button
-- keeps profile picture always first in the topbar
-navigation logic lives here :)
-＼(^^)／
-*/
-
 import { state } from "./state.js";
 import { parseMarkdown } from "./markdown.js";
 import { showDisclaimer } from "./disclaimer.js";
@@ -25,23 +15,19 @@ async function init() {
   const others = data.pages.filter(p => p.id !== "home");
   state.pages = home ? [home, ...others] : data.pages;
 
-  // keep profile pic as first element
   const profile = nav.querySelector(".profile-pic");
   nav.innerHTML = "";
   nav.appendChild(profile);
 
-  // home button
   const homeBtn = document.createElement("button");
   homeBtn.textContent = "home";
   homeBtn.onclick = () => navigate("home");
   nav.appendChild(homeBtn);
 
-  // spacer
   const spacer = document.createElement("div");
   spacer.style.flex = "1";
   nav.appendChild(spacer);
 
-  // pages launcher
   const pagesBtn = document.createElement("button");
   pagesBtn.textContent = "pages";
   pagesBtn.onclick = openOverlay;
@@ -61,7 +47,6 @@ function openOverlay() {
 
   state.pages.forEach(p => {
     if (p.id === "home") return;
-
     const btn = document.createElement("button");
     btn.textContent = p.id;
     btn.onclick = () => {
@@ -100,6 +85,9 @@ async function loadPage(id) {
   const md = await (await fetch(`source/pages/${page.file}`)).text();
   content.innerHTML = parseMarkdown(md);
 
+  content.classList.toggle("home-page", id === "home");
+
+  enableImageZoom();
   history.pushState({}, "", "#" + id);
 }
 
@@ -107,5 +95,29 @@ window.onpopstate = () => {
   const id = location.hash.slice(1) || "home";
   navigate(id);
 };
+
+function enableImageZoom() {
+  document.querySelectorAll("img").forEach(img => {
+    img.style.cursor = "zoom-in";
+
+    img.onclick = () => {
+      const overlay = document.createElement("div");
+      overlay.className = "image-overlay";
+
+      const big = document.createElement("img");
+      big.src = img.src;
+      big.style.maxWidth = "90%";
+      big.style.maxHeight = "90%";
+      big.style.borderRadius = "12px";
+      big.style.boxShadow = "0 0 20px rgba(0,0,0,0.5)";
+      big.style.objectFit = "contain";
+
+      overlay.appendChild(big);
+      overlay.onclick = () => overlay.remove();
+
+      document.body.appendChild(overlay);
+    };
+  });
+}
 
 init();

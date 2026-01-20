@@ -70,7 +70,7 @@ async function preloadPages() {
     // optional features
     // deprecated too lmao await loadModule("./chaos.js", true);
     // deprecated await loadModule("./disclaimer.js", true);
-    await loadModule("./matrix.js", true);
+    await loadModule("./particles.js", true);
 
     await preloadPages();
 

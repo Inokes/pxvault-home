@@ -1,20 +1,11 @@
-<!--
-file: index.html
-what this does:
-- main html shell for the entire site
-- mounts loader, router, canvas background
-- topbar now includes a profile picture on the far left
-this file should stay dumb :)
-＼(^^)／
--->
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>pxwo</title>
-   <!-- general metadata -->
+
+  <!-- general metadata -->
   <meta name="description" content="pxvault.site – pxwo's personal site with dynamic markdown, matrix-style canvas background, custom loader, and retro-inspired navigation. Contains update logs, optional chaos links, and a vintage coding aesthetic.">
   <meta name="keywords" content="pxvault, pxwo, markdown, javascript, html, canvas, matrix, personal site, blog, github pages, retro coding">
   <meta name="author" content="pxwo">
@@ -38,12 +29,11 @@ this file should stay dumb :)
   <link rel="icon" href="source/assets/photos/profile.png" type="image/png">
   <link rel="stylesheet" href="source/styling/main.css">
 </head>
-
 <body>
-
 <div id="loader-screen">
   <div class="loader-box">
     <h1>loading pxvault</h1>
+    <small>fxzttk is gay!! :></small>
     <pre id="loader-log"></pre>
   </div>
 </div>
@@ -52,11 +42,7 @@ this file should stay dumb :)
 
 <header class="topbar">
   <nav>
-    <img
-      src="source/assets/photos/profile.png"
-      alt="profile"
-      class="profile-pic"
-    >
+    <img src="source/assets/photos/profile.png" alt="profile" class="profile-pic">
   </nav>
 </header>
 
@@ -65,6 +51,5 @@ this file should stay dumb :)
 </main>
 
 <script type="module" src="source/scripts/loader.js"></script>
-
 </body>
 </html>
