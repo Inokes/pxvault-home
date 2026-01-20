@@ -1,6 +1,35 @@
 {
-  "generated": "2026-01-20T22:19:35.604Z",
-  "pages": [],
+  "generated": "2026-01-20T22:24:39.647Z",
+  "pages": [
+    {
+      "id": "behind-the-curtains",
+      "file": "behind-the-curtains.md"
+    },
+    {
+      "id": "home",
+      "file": "home.md"
+    },
+    {
+      "id": "rollback",
+      "file": "rollback.md"
+    },
+    {
+      "id": "update1",
+      "file": "update1.md"
+    },
+    {
+      "id": "update2",
+      "file": "update2.md"
+    },
+    {
+      "id": "update3",
+      "file": "update3.md"
+    },
+    {
+      "id": "website-2.0",
+      "file": "website-2.0.md"
+    }
+  ],
   "tree": [
     {
       "type": "dir",
@@ -67,8 +96,43 @@
           "children": [
             {
               "type": "file",
+              "name": "behind-the-curtains.md",
+              "path": "source/pages/behind-the-curtains.md"
+            },
+            {
+              "type": "file",
+              "name": "home.md",
+              "path": "source/pages/home.md"
+            },
+            {
+              "type": "file",
               "name": "index.json",
               "path": "source/pages/index.json"
+            },
+            {
+              "type": "file",
+              "name": "rollback.md",
+              "path": "source/pages/rollback.md"
+            },
+            {
+              "type": "file",
+              "name": "update1.md",
+              "path": "source/pages/update1.md"
+            },
+            {
+              "type": "file",
+              "name": "update2.md",
+              "path": "source/pages/update2.md"
+            },
+            {
+              "type": "file",
+              "name": "update3.md",
+              "path": "source/pages/update3.md"
+            },
+            {
+              "type": "file",
+              "name": "website-2.0.md",
+              "path": "source/pages/website-2.0.md"
             }
           ]
         },
