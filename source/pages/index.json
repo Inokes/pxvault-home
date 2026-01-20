@@ -1,23 +1,6 @@
 {
-  "generated": "2026-01-14T17:47:01.496Z",
-  "pages": [
-    {
-      "id": "behind-the-curtains",
-      "file": "behind-the-curtains.md"
-    },
-    {
-      "id": "home",
-      "file": "home.md"
-    },
-    {
-      "id": "update1",
-      "file": "update1.md"
-    },
-    {
-      "id": "update2",
-      "file": "update2.md"
-    }
-  ],
+  "generated": "2026-01-20T22:19:35.604Z",
+  "pages": [],
   "tree": [
     {
       "type": "dir",
@@ -65,12 +48,6 @@
           "children": [
             {
               "type": "dir",
-              "name": "audio",
-              "path": "source/assets/audio",
-              "children": []
-            },
-            {
-              "type": "dir",
               "name": "photos",
               "path": "source/assets/photos",
               "children": [
@@ -78,19 +55,8 @@
                   "type": "file",
                   "name": "oldprofile.png",
                   "path": "source/assets/photos/oldprofile.png"
-                },
-                {
-                  "type": "file",
-                  "name": "profile.png",
-                  "path": "source/assets/photos/profile.png"
                 }
               ]
-            },
-            {
-              "type": "dir",
-              "name": "video",
-              "path": "source/assets/video",
-              "children": []
             }
           ]
         },
@@ -101,28 +67,8 @@
           "children": [
             {
               "type": "file",
-              "name": "behind-the-curtains.md",
-              "path": "source/pages/behind-the-curtains.md"
-            },
-            {
-              "type": "file",
-              "name": "home.md",
-              "path": "source/pages/home.md"
-            },
-            {
-              "type": "file",
               "name": "index.json",
               "path": "source/pages/index.json"
-            },
-            {
-              "type": "file",
-              "name": "update1.md",
-              "path": "source/pages/update1.md"
-            },
-            {
-              "type": "file",
-              "name": "update2.md",
-              "path": "source/pages/update2.md"
             }
           ]
         },
