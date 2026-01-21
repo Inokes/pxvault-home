@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { parseMarkdown } from "./markdown.js";
-import { showDisclaimer } from "./disclaimer.js";
+import { showDisclaimer } from "../features/disclaimer.js";
+import { showCards } from "../features/cards.js";
 
 const content = document.getElementById("content");
 const nav = document.querySelector(".topbar nav");
@@ -33,6 +34,14 @@ async function init() {
   pagesBtn.onclick = openOverlay;
   nav.appendChild(pagesBtn);
 
+  const cardsBtn = document.createElement("button");
+  cardsBtn.textContent = "cards";
+  cardsBtn.onclick = () => {
+    closeOverlay();
+    showCards(content);
+  };
+  nav.appendChild(cardsBtn);
+
   navigate("home");
 }
 
@@ -47,6 +56,7 @@ function openOverlay() {
 
   state.pages.forEach(p => {
     if (p.id === "home") return;
+
     const btn = document.createElement("button");
     btn.textContent = p.id;
     btn.onclick = () => {

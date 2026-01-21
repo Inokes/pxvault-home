@@ -1,14 +1,10 @@
 /*
 file: disclaimer.js
-what this does:
-- blocks content behind a disclaimer
-- enforces countdown + glitch effect
-- optionally opens chaos link hell
-if this fails, content loads immediately :)
-ಠ‿ಠ
+blocks content behind a persistent disclaimer
+with animation and optional chaos
 */
 
-import { state } from "./state.js";
+import { state } from "../core/state.js";
 import { showChaosLinks } from "./chaos.js";
 
 const COUNTDOWN_SECONDS = 5;
@@ -47,6 +43,10 @@ export function showDisclaimer(content, onAccept) {
   const countdownEl = content.querySelector(".countdown");
   const box = content.querySelector(".disclaimer");
 
+  requestAnimationFrame(() => {
+    box.classList.add("disclaimer-enter");
+  });
+
   clearInterval(timer);
 
   timer = setInterval(() => {
@@ -58,12 +58,16 @@ export function showDisclaimer(content, onAccept) {
       yesBtn.disabled = false;
       countdownEl.textContent = "boss defeated";
       box.classList.remove("glitch");
+      box.classList.add("disclaimer-clear");
     }
   }, 1000);
 
   yesBtn.onclick = () => {
     if (yesBtn.disabled) return;
+
     state.disclaimerAccepted = true;
+    localStorage.setItem("disclaimerAccepted", "true");
+
     onAccept();
   };
 
@@ -71,4 +75,3 @@ export function showDisclaimer(content, onAccept) {
     showChaosLinks(content, 250);
   };
 }
-

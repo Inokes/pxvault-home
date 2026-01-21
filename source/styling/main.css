@@ -320,3 +320,134 @@ select:focus-visible {
   80% { transform: translate(2px, -2px); }
   100% { transform: translate(0); }
 }
+
+.card-container {
+  display: grid;
+  place-items: center;
+  min-height: 40vh;
+}
+
+.card {
+  width: 320px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.card-front input {
+  width: 100%;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card {
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* content transitions */
+
+.content-fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.content-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* disclaimer animation */
+
+.disclaimer {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.disclaimer-enter {
+  animation: disclaimer-in 0.4s ease-out forwards;
+}
+
+.disclaimer-clear {
+  animation: disclaimer-clear 0.6s ease-out forwards;
+}
+
+@keyframes disclaimer-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes disclaimer-clear {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+/* cards */
+
+.card-container {
+  display: grid;
+  place-items: center;
+  min-height: 40vh;
+}
+
+.card {
+  width: 320px;
+  height: 200px;
+  perspective: 1000px;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}

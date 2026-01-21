@@ -1,13 +1,5 @@
 /*
-file: loader.js
-what this does:
-- central bootloader for the entire site
-- loads scripts in order
-- logs what failed, what is optional, and what was skipped
-- disables failing features instead of crashing
-- preloads markdown pages
-- hides the loading screen when done :)
-(｀・ω・´)ゞ
+central bootloader
 */
 
 const logEl = document.getElementById("loader-log");
@@ -30,13 +22,12 @@ async function loadModule(path, optional = false) {
     await import(path);
     ok(path);
     return true;
-  } catch (e) {
+  } catch {
     if (optional) {
       fail(path + " (optional, disabled)");
       return false;
-    } else {
-      throw new Error(path + " failed hard");
     }
+    throw new Error(path + " failed hard");
   }
 }
 
@@ -62,15 +53,15 @@ async function preloadPages() {
   log("");
 
   try {
-    // mandatory core
     await loadModule("./state.js");
     await loadModule("./markdown.js");
     await loadModule("./router.js");
 
-    // optional features
-    // deprecated too lmao await loadModule("./chaos.js", true);
-    // deprecated await loadModule("./disclaimer.js", true);
-    await loadModule("./particles.js", true);
+    await loadModule("../features/cards.js", true);
+    await loadModule("../features/disclaimer.js", true);
+    await loadModule("../features/particles.js", true);
+    await loadModule("../features/chaos.js", true);
+    await loadModule("../features/files.js", true);
 
     await preloadPages();
 
@@ -84,4 +75,3 @@ async function preloadPages() {
     }, 500);
   }
 })();
-

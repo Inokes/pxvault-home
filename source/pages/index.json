@@ -1,5 +1,4 @@
 {
-  "generated": "2026-01-20T22:24:39.647Z",
   "pages": [
     {
       "id": "behind-the-curtains",
@@ -8,6 +7,14 @@
     {
       "id": "home",
       "file": "home.md"
+    },
+    {
+      "id": "jan21st",
+      "file": "jan21st.md"
+    },
+    {
+      "id": "january-20th",
+      "file": "january-20th.md"
     },
     {
       "id": "rollback",
@@ -28,174 +35,6 @@
     {
       "id": "website-2.0",
       "file": "website-2.0.md"
-    }
-  ],
-  "tree": [
-    {
-      "type": "dir",
-      "name": ".github",
-      "path": ".github",
-      "children": [
-        {
-          "type": "dir",
-          "name": "workflows",
-          "path": ".github/workflows",
-          "children": [
-            {
-              "type": "file",
-              "name": "static.yml",
-              "path": ".github/workflows/static.yml"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "file",
-      "name": "CNAME",
-      "path": "CNAME"
-    },
-    {
-      "type": "file",
-      "name": "ftree.js",
-      "path": "ftree.js"
-    },
-    {
-      "type": "file",
-      "name": "index.html",
-      "path": "index.html"
-    },
-    {
-      "type": "dir",
-      "name": "source",
-      "path": "source",
-      "children": [
-        {
-          "type": "dir",
-          "name": "assets",
-          "path": "source/assets",
-          "children": [
-            {
-              "type": "dir",
-              "name": "photos",
-              "path": "source/assets/photos",
-              "children": [
-                {
-                  "type": "file",
-                  "name": "oldprofile.png",
-                  "path": "source/assets/photos/oldprofile.png"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "dir",
-          "name": "pages",
-          "path": "source/pages",
-          "children": [
-            {
-              "type": "file",
-              "name": "behind-the-curtains.md",
-              "path": "source/pages/behind-the-curtains.md"
-            },
-            {
-              "type": "file",
-              "name": "home.md",
-              "path": "source/pages/home.md"
-            },
-            {
-              "type": "file",
-              "name": "index.json",
-              "path": "source/pages/index.json"
-            },
-            {
-              "type": "file",
-              "name": "rollback.md",
-              "path": "source/pages/rollback.md"
-            },
-            {
-              "type": "file",
-              "name": "update1.md",
-              "path": "source/pages/update1.md"
-            },
-            {
-              "type": "file",
-              "name": "update2.md",
-              "path": "source/pages/update2.md"
-            },
-            {
-              "type": "file",
-              "name": "update3.md",
-              "path": "source/pages/update3.md"
-            },
-            {
-              "type": "file",
-              "name": "website-2.0.md",
-              "path": "source/pages/website-2.0.md"
-            }
-          ]
-        },
-        {
-          "type": "dir",
-          "name": "scripts",
-          "path": "source/scripts",
-          "children": [
-            {
-              "type": "file",
-              "name": "chaos.js",
-              "path": "source/scripts/chaos.js"
-            },
-            {
-              "type": "file",
-              "name": "disclaimer.js",
-              "path": "source/scripts/disclaimer.js"
-            },
-            {
-              "type": "file",
-              "name": "files.js",
-              "path": "source/scripts/files.js"
-            },
-            {
-              "type": "file",
-              "name": "loader.js",
-              "path": "source/scripts/loader.js"
-            },
-            {
-              "type": "file",
-              "name": "markdown.js",
-              "path": "source/scripts/markdown.js"
-            },
-            {
-              "type": "file",
-              "name": "matrix.js",
-              "path": "source/scripts/matrix.js"
-            },
-            {
-              "type": "file",
-              "name": "router.js",
-              "path": "source/scripts/router.js"
-            },
-            {
-              "type": "file",
-              "name": "state.js",
-              "path": "source/scripts/state.js"
-            }
-          ]
-        },
-        {
-          "type": "dir",
-          "name": "styling",
-          "path": "source/styling",
-          "children": [
-            {
-              "type": "file",
-              "name": "main.css",
-              "path": "source/styling/main.css"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
