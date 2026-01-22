@@ -1,10 +1,7 @@
 /*
 file: markdown.js
-what this does:
-- parses markdown into html
-- supports headings, lists, code, links, images, etc
-- escapes html to avoid xss
-if this breaks, markdown becomes plain text ¯\_(ツ)_/¯
+minimal markdown parser
+still dumb, just less self-destructive
 */
 
 export function parseMarkdown(md) {
@@ -16,9 +13,12 @@ export function parseMarkdown(md) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-  // code blocks ```
+  // ---- protect code blocks ----
+  const codeBlocks = [];
   md = md.replace(/```([\s\S]*?)```/g, (_, code) => {
-    return `<pre><code>${code}</code></pre>`;
+    const key = `__CODE_BLOCK_${codeBlocks.length}__`;
+    codeBlocks.push(`<pre><code>${code}</code></pre>`);
+    return key;
   });
 
   // horizontal rule
@@ -42,13 +42,13 @@ export function parseMarkdown(md) {
   md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2" target="_blank">$1</a>`);
 
   // bold + italic
-  md = md.replace(/\*\*\*(.*?)\*\*\*/g, "<strong><em>$1</em></strong>");
+  md = md.replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em>$1</em></strong>");
 
   // bold
-  md = md.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  md = md.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
-  // italic
-  md = md.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  // italic (avoid list markers)
+  md = md.replace(/(^|[^\*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<em>$2</em>");
 
   // inline code
   md = md.replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -79,20 +79,20 @@ export function parseMarkdown(md) {
     }
   );
 
-  // paragraphs
+  // paragraphs (more tolerant)
   md = md
     .split("\n\n")
     .map(block => {
-      if (
-        block.match(/^<(h\d|ul|ol|pre|blockquote|img|hr)/)
-      ) {
-        return block;
-      }
-      if (block.trim() === "") return "";
+      if (block.trim().startsWith("<")) return block;
+      if (!block.trim()) return "";
       return `<p>${block.trim()}</p>`;
     })
     .join("\n");
 
+  // ---- restore code blocks ----
+  codeBlocks.forEach((html, i) => {
+    md = md.replace(`__CODE_BLOCK_${i}__`, html);
+  });
+
   return md;
 }
-

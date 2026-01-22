@@ -43,7 +43,9 @@ function buildIndex() {
     process.exit(1);
   }
 
-  const pages = walk(pagesDir);
+  const pages = walk(pagesDir).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
 
   fs.writeFileSync(
     outFile,

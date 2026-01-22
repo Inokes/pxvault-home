@@ -5,7 +5,7 @@ simple snow-like particle background
 
 const canvas = document.getElementById("life");
 const ctx = canvas.getContext("2d");
-
+let running = true;
 let w, h;
 let particles = [];
 
@@ -31,8 +31,9 @@ function init() {
 }
 
 function draw() {
-  ctx.clearRect(0, 0, w, h);
+  if (!running) return;
 
+  ctx.clearRect(0, 0, w, h);
   ctx.fillStyle = "rgba(211, 218, 217, 0.7)";
 
   for (const p of particles) {
@@ -63,3 +64,8 @@ window.addEventListener("resize", () => {
 resize();
 init();
 draw();
+
+document.addEventListener("visibilitychange", () => {
+  running = document.visibilityState === "visible";
+  if (running) draw();
+});

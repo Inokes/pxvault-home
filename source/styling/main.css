@@ -169,24 +169,13 @@ a:hover {
   z-index: 10000;
   display: grid;
   place-items: center;
-  transition: opacity 0.4s ease;
 }
 
-.loader-box {
-  background: var(--surface);
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  max-width: 60ch;
+.loader-gif {
+  width: 160px;
+  height: auto;
+  image-rendering: pixelated;
 }
-
-#loader-log {
-  font-size: 0.65rem;
-  line-height: 1.4;
-  white-space: pre-wrap;
-  color: var(--accent-muted);
-}
-
 /* profile pic */
 
 .profile-pic {
