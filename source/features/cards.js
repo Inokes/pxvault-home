@@ -14,7 +14,8 @@ const RESPONSES = {
   pxwo: "you're either me or not. choose accordingly",
   sano: "we just met but we have a lot in common :o",
   fred: "dogs cant type",
-  agatha: "cats (old cats too) also can't type"
+  agatha: "cats (old cats too) also can't type",
+  nico: "youre gay but genuinely still my twin /srs /gen"
 };
 
 function normalize(str) {
