@@ -8,21 +8,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /* ---------- find project root ---------- */
-/* root is identified by index.html */
 
 function findRoot(start) {
   let dir = start;
 
   while (true) {
-    const candidate = path.join(dir, "index.html");
-    if (fs.existsSync(candidate)) return dir;
-
+    if (fs.existsSync(path.join(dir, "index.html"))) {
+      return dir;
+    }
     const parent = path.dirname(dir);
     if (parent === dir) break;
     dir = parent;
   }
 
-  throw new Error("project root not found (index.html missing)");
+  throw new Error("project root not found");
 }
 
 const root = findRoot(__dirname);
@@ -38,7 +37,7 @@ function hasFrontmatter(text) {
   return text.startsWith("---\n");
 }
 
-function frontmatter(title, date) {
+function makeFrontmatter(title, date) {
   return `---
 title: ${title}
 date: ${date}
@@ -71,7 +70,7 @@ function walk(dir, base = "") {
     if (!hasFrontmatter(text)) {
       const title = path.basename(entry.name, ".md");
       const date = stat.mtime.toISOString();
-      text = frontmatter(title, date) + text;
+      text = makeFrontmatter(title, date) + text;
       fs.writeFileSync(abs, text, "utf8");
     }
 
