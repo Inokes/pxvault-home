@@ -1,9 +1,5 @@
-/*
-central bootloader
-*/
-
 import { state } from "./state.js";
-import { parseMarkdown } from "./markdown.js";
+import { parseMarkdown, extractFrontmatter } from "./markdown.js";
 
 async function loadModule(path, optional = false) {
   try {
@@ -20,10 +16,15 @@ async function preloadPages() {
 
   state.pages = await Promise.all(
     data.pages.map(async p => {
-      const md = await (await fetch("source/pages/" + p.file)).text();
+      const raw = await (await fetch("source/pages/" + p.file)).text();
+      const { meta, body } = extractFrontmatter(raw);
+
       return {
         ...p,
-        html: parseMarkdown(md)
+        title: meta.title || p.id,
+        date: meta.date ? new Date(meta.date) : null,
+        meta,
+        html: parseMarkdown(body)
       };
     })
   );
@@ -31,7 +32,6 @@ async function preloadPages() {
 
 (async function boot() {
   try {
-    await loadModule("./markdown.js");
     await loadModule("./router.js");
     await loadModule("../features/cards.js");
 
@@ -39,10 +39,6 @@ async function preloadPages() {
       await loadModule("../features/disclaimer.js", true);
     state.features.particles =
       await loadModule("../features/particles.js", true);
-    state.features.chaos =
-      await loadModule("../features/chaos.js", true);
-    state.features.files =
-      await loadModule("../features/files.js", true);
 
     await preloadPages();
   } finally {

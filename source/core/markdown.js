@@ -1,30 +1,42 @@
-/*
-file: markdown.js
-minimal markdown parser
-still dumb, just less self-destructive
-*/
+export function extractFrontmatter(md) {
+  if (!md.startsWith("---\n")) {
+    return { meta: {}, body: md };
+  }
+
+  const end = md.indexOf("\n---", 3);
+  if (end === -1) {
+    return { meta: {}, body: md };
+  }
+
+  const raw = md.slice(4, end).trim();
+  const body = md.slice(end + 4).trim();
+
+  const meta = {};
+  raw.split("\n").forEach(line => {
+    const i = line.indexOf(":");
+    if (i === -1) return;
+    meta[line.slice(0, i).trim()] =
+      line.slice(i + 1).trim();
+  });
+
+  return { meta, body };
+}
 
 export function parseMarkdown(md) {
   md = md.replace(/\r\n/g, "\n");
 
-  // escape html
   md = md
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-  // ---- protect code blocks ----
-  const codeBlocks = [];
-  md = md.replace(/```([\s\S]*?)```/g, (_, code) => {
-    const key = `__CODE_BLOCK_${codeBlocks.length}__`;
-    codeBlocks.push(`<pre><code>${code}</code></pre>`);
-    return key;
+  const code = [];
+  md = md.replace(/```([\s\S]*?)```/g, (_, c) => {
+    const k = `__CODE_${code.length}__`;
+    code.push(`<pre><code>${c}</code></pre>`);
+    return k;
   });
 
-  // horizontal rule
-  md = md.replace(/^---$/gm, "<hr>");
-
-  // headings
   md = md.replace(/^###### (.*)$/gm, "<h6>$1</h6>");
   md = md.replace(/^##### (.*)$/gm, "<h5>$1</h5>");
   md = md.replace(/^#### (.*)$/gm, "<h4>$1</h4>");
@@ -32,66 +44,21 @@ export function parseMarkdown(md) {
   md = md.replace(/^## (.*)$/gm, "<h2>$1</h2>");
   md = md.replace(/^# (.*)$/gm, "<h1>$1</h1>");
 
-  // blockquote
   md = md.replace(/^> (.*)$/gm, "<blockquote>$1</blockquote>");
-
-  // images
   md = md.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, `<img src="$2" alt="$1">`);
+  md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2">$1</a>`);
 
-  // links
-  md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2" target="_blank">$1</a>`);
-
-  // bold + italic
-  md = md.replace(/\*\*\*(.+?)\*\*\*/g, "<strong><em>$1</em></strong>");
-
-  // bold
   md = md.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-
-  // italic (avoid list markers)
-  md = md.replace(/(^|[^\*])\*(?!\s)(.+?)\*(?!\*)/g, "$1<em>$2</em>");
-
-  // inline code
+  md = md.replace(/\*(.+?)\*/g, "<em>$1</em>");
   md = md.replace(/`([^`]+)`/g, "<code>$1</code>");
 
-  // unordered lists
-  md = md.replace(
-    /(?:^|\n)([-*] .*(?:\n[-*] .*)*)/g,
-    block => {
-      const items = block
-        .trim()
-        .split("\n")
-        .map(l => `<li>${l.slice(2)}</li>`)
-        .join("");
-      return `<ul>${items}</ul>`;
-    }
-  );
-
-  // ordered lists
-  md = md.replace(
-    /(?:^|\n)((?:\d+\. .*(?:\n\d+\. .*)*))/g,
-    block => {
-      const items = block
-        .trim()
-        .split("\n")
-        .map(l => `<li>${l.replace(/^\d+\. /, "")}</li>`)
-        .join("");
-      return `<ol>${items}</ol>`;
-    }
-  );
-
-  // paragraphs (more tolerant)
   md = md
     .split("\n\n")
-    .map(block => {
-      if (block.trim().startsWith("<")) return block;
-      if (!block.trim()) return "";
-      return `<p>${block.trim()}</p>`;
-    })
+    .map(b => b.trim().startsWith("<") ? b : b && `<p>${b}</p>`)
     .join("\n");
 
-  // ---- restore code blocks ----
-  codeBlocks.forEach((html, i) => {
-    md = md.replace(`__CODE_BLOCK_${i}__`, html);
+  code.forEach((c, i) => {
+    md = md.replace(`__CODE_${i}__`, c);
   });
 
   return md;

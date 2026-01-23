@@ -1,10 +1,11 @@
 /*
 file: particles.js
-simple snow-like particle background
+simple amoled-friendly particle background
 */
 
 const canvas = document.getElementById("life");
 const ctx = canvas.getContext("2d");
+
 let running = true;
 let w, h;
 let particles = [];
@@ -20,7 +21,7 @@ function create() {
   return {
     x: Math.random() * w,
     y: Math.random() * h,
-    r: Math.random() * 2 + 0.5,
+    r: Math.random() * 1.6 + 0.4,
     vy: Math.random() * 0.6 + 0.2,
     vx: Math.random() * 0.4 - 0.2
   };
@@ -34,7 +35,7 @@ function draw() {
   if (!running) return;
 
   ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = "rgba(211, 218, 217, 0.7)";
+  ctx.fillStyle = "rgba(0, 255, 156, 0.45)";
 
   for (const p of particles) {
     ctx.beginPath();

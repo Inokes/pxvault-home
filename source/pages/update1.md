@@ -1,3 +1,8 @@
+---
+title: update1
+date: 2026-01-23T01:16:57.377Z
+---
+
 # pxvault – recent changes log
 
 this file documents **what i actually changed**, in order, starting from the first real version and ending at the current state.

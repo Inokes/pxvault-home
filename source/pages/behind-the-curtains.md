@@ -1,3 +1,8 @@
+---
+title: behind-the-curtains
+date: 2026-01-23T01:16:57.321Z
+---
+
 # how does this work?
  the way this website works, and how you see this is powered by a simple markdown parser that displays markdown to html via javascript.
 # how do i set this up for me?
