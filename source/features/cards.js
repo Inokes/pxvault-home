@@ -1,10 +1,7 @@
 /*
 file: cards.js
-what this does:
-- renders a card input ui
-- no markdown involved
-- case-insensitive input
-- fortune-card style responses
+renders a fortune-style flip card
+fully controlled here
 */
 
 const RESPONSES = {
@@ -15,7 +12,9 @@ const RESPONSES = {
   sano: "we just met but we have a lot in common :o",
   fred: "dogs cant type",
   agatha: "cats (old cats too) also can't type",
-  nico: "youre gay but genuinely still my twin /srs /gen"
+  nico: "youre sosososo cool nico :o",
+  bigpo: "youre popopo go bigpo bogpo pog pigbo bipgo also cool",
+  me: "THANKS FOR TEACHING ME HOW TO BE A FRIEND"
 };
 
 function normalize(str) {
@@ -23,8 +22,10 @@ function normalize(str) {
 }
 
 function getResponse(word) {
-  return RESPONSES[word] ||
-    `you are "${word}". no definition found. so you get to write it yourself.`;
+  return (
+    RESPONSES[word] ||
+    `you are "${word}". no definition found. so you get to write it yourself.`
+  );
 }
 
 export function showCards(content) {
@@ -36,13 +37,20 @@ export function showCards(content) {
           <input id="card-input" type="text" autocomplete="off">
           <button id="card-submit">this is me</button>
         </div>
-        <div class="card-face card-back" id="card-back"></div>
+
+        <div class="card-face card-back">
+          <div class="card-result" id="card-back"></div>
+          <button class="card-flip-again" id="card-reset">
+            flip again
+          </button>
+        </div>
       </div>
     </div>
   `;
 
   const input = document.getElementById("card-input");
   const submit = document.getElementById("card-submit");
+  const reset = document.getElementById("card-reset");
   const card = document.getElementById("card");
   const back = document.getElementById("card-back");
 
@@ -53,5 +61,11 @@ export function showCards(content) {
     back.textContent = getResponse(value);
     card.classList.add("flipped");
   };
-}
 
+  reset.onclick = e => {
+    e.stopPropagation();
+    input.value = "";
+    card.classList.remove("flipped");
+    input.focus();
+  };
+}

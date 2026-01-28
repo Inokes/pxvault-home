@@ -5,10 +5,6 @@ import { showCards } from "../features/cards.js";
 const content = document.getElementById("content");
 const nav = document.querySelector(".topbar nav");
 
-let overlay = null;
-let sortMode = "newest";
-let filterText = "";
-
 /* -------- helpers -------- */
 
 function normalizeDate(d) {
@@ -19,11 +15,35 @@ function normalizeDate(d) {
   return Number.isNaN(t) ? 0 : t;
 }
 
+function getFirstTextLine(html) {
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+
+  const walker = document.createTreeWalker(
+    tmp,
+    NodeFilter.SHOW_TEXT,
+    null
+  );
+
+  while (walker.nextNode()) {
+    const t = walker.currentNode.textContent.trim();
+    if (t) return t;
+  }
+
+  return "";
+}
+
 /* -------- navigation -------- */
 
 function navigate(id) {
   if (!state.disclaimerAccepted) {
     showDisclaimer(content, () => navigate(id));
+    return;
+  }
+
+  if (id === "blog") {
+    renderBlog();
+    history.pushState({}, "", "#blog");
     return;
   }
 
@@ -37,101 +57,46 @@ function navigate(id) {
   history.pushState({}, "", "#" + id);
 }
 
-/* -------- pages overlay -------- */
+/* -------- blog feed -------- */
 
-function openOverlay() {
-  if (overlay) return;
+function renderBlog() {
+  const posts = [...state.pages]
+    .filter(p => p.id !== "home")
+    .sort((a, b) => normalizeDate(b.date) - normalizeDate(a.date));
 
-  overlay = document.createElement("div");
-  overlay.className = "pages-overlay";
-
-  const box = document.createElement("div");
-  box.className = "pages-box";
-
-  const filter = document.createElement("input");
-  filter.type = "text";
-  filter.placeholder = "filter pages";
-  filter.value = filterText;
-
-  filter.oninput = () => {
-    filterText = filter.value.toLowerCase();
-    render();
-  };
-
-  const select = document.createElement("select");
-  select.innerHTML = `
-    <option value="newest">newest</option>
-    <option value="oldest">oldest</option>
-    <option value="title">title</option>
+  content.innerHTML = `
+    <section class="blog-feed">
+      ${posts.map(renderPost).join("")}
+    </section>
   `;
-  select.value = sortMode;
 
-  select.onchange = () => {
-    sortMode = select.value;
-    render();
-  };
-
-  box.append(filter, select);
-
-  function render() {
-    box.querySelectorAll("button.page-btn").forEach(b => b.remove());
-
-    [...state.pages]
-      .filter(p => p.id !== "home")
-      .filter(p => {
-        if (!filterText) return true;
-        return (
-          p.title?.toLowerCase().includes(filterText) ||
-          p.id?.toLowerCase().includes(filterText)
-        );
-      })
-      .sort((a, b) => {
-        if (sortMode === "title") {
-          return (a.title || "").localeCompare(b.title || "");
-        }
-
-        const da = normalizeDate(a.date);
-        const db = normalizeDate(b.date);
-
-        if (sortMode === "oldest") return da - db;
-        return db - da; // newest
-      })
-      .forEach(p => {
-        const btn = document.createElement("button");
-        btn.className = "page-btn";
-
-        const ts = normalizeDate(p.date);
-        const dateStr = ts
-          ? new Date(ts).toLocaleDateString("pt-BR")
-          : "";
-
-        btn.innerHTML = `
-          <strong>${p.title}</strong>
-          ${dateStr ? `<div class="date">${dateStr}</div>` : ""}
-        `;
-
-        btn.onclick = () => {
-          closeOverlay();
-          navigate(p.id);
-        };
-
-        box.appendChild(btn);
-      });
-  }
-
-  render();
-
-  overlay.onclick = e => {
-    if (e.target === overlay) closeOverlay();
-  };
-
-  overlay.appendChild(box);
-  document.body.appendChild(overlay);
+  content.querySelectorAll("[data-post]").forEach(el => {
+    el.onclick = () => navigate(el.dataset.post);
+  });
 }
 
-function closeOverlay() {
-  overlay?.remove();
-  overlay = null;
+function renderPost(p, index) {
+  const ts = normalizeDate(p.date);
+  const dateStr = ts
+    ? new Date(ts).toLocaleDateString("pt-br")
+    : "";
+
+  const preview = getFirstTextLine(p.html);
+
+  return `
+    <article
+      class="blog-post ${index === 0 ? "latest" : ""}"
+      data-post="${p.id}"
+    >
+      ${index === 0 ? `<span class="latest-tag">latest post</span>` : ""}
+      <div class="meta">
+        <strong>${p.title || p.id}</strong>
+        ${dateStr ? `<time>${dateStr}</time>` : ""}
+      </div>
+      <p class="preview">${preview}</p>
+      <code>#${p.id}</code>
+    </article>
+  `;
 }
 
 /* -------- init -------- */
@@ -145,15 +110,15 @@ function init() {
   home.textContent = "home";
   home.onclick = () => navigate("home");
 
-  const pages = document.createElement("button");
-  pages.textContent = "pages";
-  pages.onclick = openOverlay;
+  const blog = document.createElement("button");
+  blog.textContent = "blog";
+  blog.onclick = () => navigate("blog");
 
   const cards = document.createElement("button");
   cards.textContent = "cards";
   cards.onclick = () => showCards(content);
 
-  nav.append(home, pages, cards);
+  nav.append(home, blog, cards);
 }
 
 function start() {

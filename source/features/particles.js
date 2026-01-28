@@ -1,6 +1,7 @@
 /*
 file: particles.js
 simple amoled-friendly particle background
+adjusted to cold cyan palette
 */
 
 const canvas = document.getElementById("life");
@@ -10,7 +11,7 @@ let running = true;
 let w, h;
 let particles = [];
 
-const COUNT = 140;
+const COUNT = 120;
 
 function resize() {
   w = canvas.width = window.innerWidth;
@@ -21,9 +22,10 @@ function create() {
   return {
     x: Math.random() * w,
     y: Math.random() * h,
-    r: Math.random() * 1.6 + 0.4,
-    vy: Math.random() * 0.6 + 0.2,
-    vx: Math.random() * 0.4 - 0.2
+    r: Math.random() * 1.4 + 0.3,
+    vy: Math.random() * 0.5 + 0.15,
+    vx: Math.random() * 0.3 - 0.15,
+    a: Math.random() * 0.35 + 0.15
   };
 }
 
@@ -35,9 +37,10 @@ function draw() {
   if (!running) return;
 
   ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = "rgba(0, 255, 156, 0.45)";
 
   for (const p of particles) {
+    ctx.fillStyle = `rgba(61, 220, 255, ${p.a})`;
+
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
@@ -45,7 +48,7 @@ function draw() {
     p.y += p.vy;
     p.x += p.vx;
 
-    if (p.y > h) {
+    if (p.y > h + 5) {
       p.y = -5;
       p.x = Math.random() * w;
     }
