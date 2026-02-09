@@ -1,6 +1,7 @@
 ---
 title: home
 date: 2026-01-23T01:16:57.333Z
+type: home
 ---
 
 ![profile](source/assets/photos/profile.png)

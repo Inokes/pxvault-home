@@ -14,6 +14,15 @@ const RESPONSES = {
   agatha: "cats (old cats too) also can't type",
   nico: "youre sosososo cool nico :o",
   bigpo: "youre popopo go bigpo bogpo pog pigbo bipgo also cool",
+  fluorescentadolescent: "you used to get it on your fishnets, now you get it on your night dress",
+  rals: "voce e muito legal caba 🥝",
+  eco: "so sad you're gone",
+  solwt: "so sad you got your mineberry account hacked lmao",
+  coas: "you think youre nonchalant denying my dms son.",
+  kay: "kay more like gay",
+  giovanni: "unha de mendingo",
+  calixto: "calixto calixto...",
+  pereba: "voce e muito homosexual pereba.",
   me: "THANKS FOR TEACHING ME HOW TO BE A FRIEND"
 };
 

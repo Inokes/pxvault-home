@@ -25,6 +25,10 @@ export function extractFrontmatter(md) {
 export function parseMarkdown(md) {
   md = md.replace(/\r\n/g, "\n");
 
+  // normaliza múltiplas linhas vazias
+  md = md.replace(/\n{3,}/g, "\n\n");
+
+  // escapa html
   md = md
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -33,7 +37,8 @@ export function parseMarkdown(md) {
   const code = [];
   md = md.replace(/```([\s\S]*?)```/g, (_, c) => {
     const k = `__CODE_${code.length}__`;
-    code.push(`<pre><code>${c}</code></pre>`);
+    const clean = c.replace(/^\n+|\n+$/g, "");
+    code.push(`<pre><code>${clean}</code></pre>`);
     return k;
   });
 
@@ -52,9 +57,16 @@ export function parseMarkdown(md) {
   md = md.replace(/\*(.+?)\*/g, "<em>$1</em>");
   md = md.replace(/`([^`]+)`/g, "<code>$1</code>");
 
+  // blocos: evita <p> vazios e preserva quebras simples como <br>
   md = md
-    .split("\n\n")
-    .map(b => b.trim().startsWith("<") ? b : b && `<p>${b}</p>`)
+    .split(/\n{2,}/)
+    .map(b => {
+      if (!b) return "";
+      if (b.trim().startsWith("<")) return b;
+      const withBr = b.replace(/\n/g, "<br>");
+      return `<p>${withBr}</p>`;
+    })
+    .filter(Boolean)
     .join("\n");
 
   code.forEach((c, i) => {

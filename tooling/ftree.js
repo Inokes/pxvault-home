@@ -8,7 +8,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /* ---------- find project root ---------- */
-/* root is identified by index.html */
 
 function findRoot(start) {
   let dir = start;
@@ -38,10 +37,12 @@ function hasFrontmatter(text) {
   return text.startsWith("---\n");
 }
 
-function frontmatter(title, date) {
+function frontmatter(title, date, type) {
+  const typeLine = type ? `type: ${type}\n` : "";
+
   return `---
 title: ${title}
-date: ${date}
+${typeLine}date: ${date}
 ---
 
 `;
@@ -68,10 +69,14 @@ function walk(dir, base = "") {
     const stat = fs.statSync(abs);
     let text = fs.readFileSync(abs, "utf8");
 
+    const isFact = rel.startsWith("facts/");
+
     if (!hasFrontmatter(text)) {
       const title = path.basename(entry.name, ".md");
       const date = stat.mtime.toISOString();
-      text = frontmatter(title, date) + text;
+      const type = isFact ? "fact" : "";
+
+      text = frontmatter(title, date, type) + text;
       fs.writeFileSync(abs, text, "utf8");
     }
 

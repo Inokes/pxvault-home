@@ -1,6 +1,7 @@
 import { state } from "./state.js";
 import { showDisclaimer } from "../features/disclaimer.js";
 import { showCards } from "../features/cards.js";
+import { showFacts } from "../features/facts.js";
 
 const content = document.getElementById("content");
 const nav = document.querySelector(".topbar nav");
@@ -44,6 +45,12 @@ function navigate(id) {
   if (id === "blog") {
     renderBlog();
     history.pushState({}, "", "#blog");
+    return;
+  }
+
+  if (id === "facts") {
+    showFacts(content);
+    history.pushState({}, "", "#facts");
     return;
   }
 
@@ -118,8 +125,14 @@ function init() {
   cards.textContent = "cards";
   cards.onclick = () => showCards(content);
 
-  nav.append(home, blog, cards);
+  const facts = document.createElement("button");
+  facts.textContent = "facts";
+  facts.onclick = () => showFacts(content);
+
+  nav.append(home, blog, cards, facts);
 }
+
+/* -------- start -------- */
 
 function start() {
   init();

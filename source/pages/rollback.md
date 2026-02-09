@@ -1,6 +1,7 @@
 ---
 title: rollback
 date: 2026-01-23T01:16:57.365Z
+type: page
 ---
 
 # i'm fucking stupid

@@ -1,6 +1,7 @@
 ---
 title: website-2.0
 date: 2026-01-23T01:28:34.673Z
+type: page
 ---
 
 # hi

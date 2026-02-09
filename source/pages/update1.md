@@ -1,6 +1,7 @@
 ---
 title: update1
 date: 2026-01-23T01:16:57.377Z
+type: post
 ---
 
 # pxvault – recent changes log

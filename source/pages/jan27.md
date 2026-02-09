@@ -1,6 +1,7 @@
 ---
 title: jan27
 date: 2026-01-27T16:18:51.264Z
+type: post
 ---
 
 # hello guys

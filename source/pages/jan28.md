@@ -1,6 +1,7 @@
 ---
 title: jan28
 date: 2026-01-28T02:29:38.823Z
+type: post
 ---
 
 # new update!

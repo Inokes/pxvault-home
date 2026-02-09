@@ -1,6 +1,7 @@
 ---
 title: jan22
 date: 2026-01-23T01:57:58.121Z
+type: post
 ---
 
 # hello

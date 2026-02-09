@@ -1,9 +1,8 @@
 ---
 title: feb5
 date: 2026-02-05T18:49:41.550Z
+type: post
 ---
-
-
 
 # hi... again
 

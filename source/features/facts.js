@@ -16,7 +16,7 @@ function pick(arr) {
 }
 
 export function showFacts(content) {
-  const facts = state.pages.filter(p => p.type === "fact");
+  const facts = state.facts;
 
   if (!facts.length) {
     content.innerHTML = "<p>no facts available</p>";
@@ -45,4 +45,3 @@ export function showFacts(content) {
   next.onclick = render;
   render();
 }
-

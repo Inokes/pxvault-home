@@ -1,6 +1,7 @@
 ---
 title: update2
 date: 2026-01-23T01:16:57.385Z
+type: post
 ---
 
 # what's new? v0.2
