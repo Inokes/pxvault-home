@@ -485,3 +485,48 @@ select {
   right: 1rem!important;
   top: auto!important;          /* override */
 }
+
+.topbar {
+  position: relative;
+  background-image: url("../assets/photos/topbar-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.topbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 11, 16, 0.55); /* dark overlay */
+  pointer-events: none;
+}
+
+.topbar > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ======================================================
+   continue screen (between loader and disclaimer)
+   ====================================================== */
+
+#continue-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: #000;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+#continue-screen .continue-text {
+  color: #fff;
+  font-size: clamp(2.5rem, 10vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  user-select: none;
+}
