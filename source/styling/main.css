@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
-
+@font-face {
+  font-family: "Andy";
+  src: url("../assets/fonts/AndyBold.OTF");
+  
+}
 /* ======================================================
    design tokens (theme)
    ====================================================== */
@@ -38,7 +42,7 @@ body {
   height: 100%;
   background: var(--bg);
   color: var(--fg);
-  font-family: "Ubuntu", system-ui, sans-serif;
+  font-family: "Andy", "Ubuntu", system-ui, sans-serif;
   overflow: hidden; /* no page scroll */
 }
 
