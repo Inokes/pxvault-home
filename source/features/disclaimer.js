@@ -17,9 +17,9 @@ export function disclaimerHtml(seconds) {
       <p>this website contains:</p>
       <ul>
         <li>profanity</li>
-        <li>toxicity</li>
-        <li>brainwashing</li>
-        <li>possible brain death caused by bad and unoptimized code</li>
+        <li>... that's all!</li>
+        <li>unholy references to some worm fodder called nico</li>
+        <li>hi</li>
       </ul>
 
       <p class="countdown">survive for ${seconds}s</p>

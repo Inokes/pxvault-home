@@ -2,6 +2,7 @@ import { state } from "./state.js";
 import { showDisclaimer } from "../features/disclaimer.js";
 import { showCards } from "../features/cards.js";
 import { showFacts } from "../features/facts.js";
+import { showFileManager } from "../features/file-manager.js";
 
 const content = document.getElementById("content");
 const nav = document.querySelector(".topbar nav");
@@ -129,7 +130,11 @@ function init() {
   facts.textContent = "facts";
   facts.onclick = () => showFacts(content);
 
-  nav.append(home, blog, cards, facts);
+  const files = document.createElement("button");
+  files.textContent = "files";
+  files.onclick = () => showFileManager(content);
+
+  nav.append(home, blog, cards, facts, files);
 }
 
 /* -------- start -------- */

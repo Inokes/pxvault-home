@@ -5,10 +5,6 @@
       "file": "behind-the-curtains.md"
     },
     {
-      "id": "fact-color",
-      "file": "fact-color.md"
-    },
-    {
       "id": "facts/armadillo",
       "file": "facts/armadillo.md"
     },
@@ -55,6 +51,10 @@
     {
       "id": "feb10",
       "file": "feb10.md"
+    },
+    {
+      "id": "feb13",
+      "file": "feb13.md"
     },
     {
       "id": "feb5",

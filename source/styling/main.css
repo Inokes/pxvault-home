@@ -9,23 +9,24 @@
    ====================================================== */
 
 :root {
-  --bg: #09060f;
-  --surface: #120b1c;
-  --surface-2: #1a1028;
+  --bg: #002b36;           /* base03 */
+  --surface: #073642;      /* base02 */
+  --surface-2: #0b3c49;    /* leve variação */
 
-  --fg: #e8e1f2;
-  --fg-muted: #a99bbd;
+  --fg: #93a1a1;           /* base1 */
+  --fg-muted: #586e75;     /* base01 */
 
-  --accent: #8b5cf6;
-  --accent-strong: #7c3aed;
-  --accent-muted: #a78bfa;
+  --accent: #6c71c4;       /* violet */
+  --accent-strong: #5b60b3;
+  --accent-muted: #7f84d6;
 
-  --accent-warm: #fbbf24;
-  --accent-warm-strong: #f59e0b;
-  --accent-warm-muted: #fcd34d;
+  --accent-warm: #b58900;  /* yellow */
+  --accent-warm-strong: #cb4b16; /* orange */
+  --accent-warm-muted: #d3a21a;
 
-  --border: #2a1f3d;
+  --border: #094352;       /* derivado de base02 */
 }
+
 
 /* ======================================================
    base reset + viewport lock
@@ -88,12 +89,15 @@ main {
 
 #content {
   width: 100%;
-  max-width: 72ch;
+  max-width: 88ch;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   padding: clamp(1rem, 4vw, 2.5rem);
+  margin: 0 auto;
 }
+
+
 
 /* ======================================================
    background layer
@@ -245,46 +249,61 @@ select {
 
 /* blog feed widget */
 
+/* blog feed widget */
+
 .blog-feed {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 0;
+  width: 100%;
 }
 
 .blog-post {
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .blog-post:hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: translateX(4px);
 }
 
 .blog-post.latest {
-  border-left: 2px solid var(--accent-warm);
-  padding-left: 0.75rem;
+  border-left: 3px solid var(--accent-warm);
+  padding-left: 1rem;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .latest-tag {
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   color: var(--accent-warm);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .blog-post .meta {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
-  opacity: 0.85;
+  align-items: center;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  gap: 1rem;
 }
 
 .blog-post .preview {
-  margin: 0.4rem 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  margin: 0.5rem 0 0.4rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
 }
+
+.blog-post code {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
 
 /* facts widget */
 
@@ -533,4 +552,130 @@ select {
   font-weight: 800;
   letter-spacing: 0.08em;
   user-select: none;
+}
+
+/* file manager */
+
+.file-manager {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1rem;
+  height: 100%;
+}
+
+.file-tree {
+  overflow-y: auto;
+  font-size: 0.8rem;
+  border-right: 1px solid var(--border);
+  padding-right: 0.5rem;
+}
+
+.file-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.file-content {
+  background: rgba(0,0,0,0.4);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow: auto;
+  font-size: 0.75rem;
+}
+
+.file-node {
+  margin-left: 0.5rem;
+}
+
+.folder {
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+
+.file {
+  cursor: pointer;
+  opacity: 0.85;
+  margin: 0.15rem 0;
+}
+
+.file:hover {
+  opacity: 1;
+}
+
+.children.hidden {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .file-manager {
+    grid-template-columns: 1fr;
+  }
+
+  .file-tree {
+    max-height: 40vh;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.layout {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-post .meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .blog-post .preview {
+    font-size: 0.9rem;
+  }
+}
+
+img,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 1400px) {
+  #content {
+    max-width: 100ch;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
 }

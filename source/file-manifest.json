@@ -1,0 +1,389 @@
+[
+  {
+    "type": "file",
+    "name": ".nojekyll",
+    "path": ".nojekyll"
+  },
+  {
+    "type": "file",
+    "name": "CNAME",
+    "path": "CNAME"
+  },
+  {
+    "type": "file",
+    "name": "dump.sh",
+    "path": "dump.sh"
+  },
+  {
+    "type": "file",
+    "name": "index.html",
+    "path": "index.html"
+  },
+  {
+    "type": "folder",
+    "name": "source",
+    "path": "source",
+    "children": [
+      {
+        "type": "folder",
+        "name": "assets",
+        "path": "source/assets",
+        "children": [
+          {
+            "type": "folder",
+            "name": "audio",
+            "path": "source/assets/audio",
+            "children": [
+              {
+                "type": "file",
+                "name": "FluorescentAdolescent.mp3",
+                "path": "source/assets/audio/FluorescentAdolescent.mp3"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "fonts",
+            "path": "source/assets/fonts",
+            "children": [
+              {
+                "type": "file",
+                "name": "AndyBold.OTF",
+                "path": "source/assets/fonts/AndyBold.OTF"
+              },
+              {
+                "type": "file",
+                "name": "AndyBoldIt.OTF",
+                "path": "source/assets/fonts/AndyBoldIt.OTF"
+              },
+              {
+                "type": "file",
+                "name": "AndyItalic.OTF",
+                "path": "source/assets/fonts/AndyItalic.OTF"
+              },
+              {
+                "type": "file",
+                "name": "AndyRegular.OTF",
+                "path": "source/assets/fonts/AndyRegular.OTF"
+              },
+              {
+                "type": "file",
+                "name": "micross.ttf",
+                "path": "source/assets/fonts/micross.ttf"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "name": "photos",
+            "path": "source/assets/photos",
+            "children": [
+              {
+                "type": "file",
+                "name": "2.png",
+                "path": "source/assets/photos/2.png"
+              },
+              {
+                "type": "file",
+                "name": "favicon.ico",
+                "path": "source/assets/photos/favicon.ico"
+              },
+              {
+                "type": "file",
+                "name": "hypr1.png",
+                "path": "source/assets/photos/hypr1.png"
+              },
+              {
+                "type": "file",
+                "name": "hypr2.png",
+                "path": "source/assets/photos/hypr2.png"
+              },
+              {
+                "type": "file",
+                "name": "loading.gif",
+                "path": "source/assets/photos/loading.gif"
+              },
+              {
+                "type": "file",
+                "name": "profile.png",
+                "path": "source/assets/photos/profile.png"
+              },
+              {
+                "type": "file",
+                "name": "topbar-bg.png",
+                "path": "source/assets/photos/topbar-bg.png"
+              },
+              {
+                "type": "file",
+                "name": "tx.png",
+                "path": "source/assets/photos/tx.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "core",
+        "path": "source/core",
+        "children": [
+          {
+            "type": "file",
+            "name": "loader.js",
+            "path": "source/core/loader.js"
+          },
+          {
+            "type": "file",
+            "name": "markdown.js",
+            "path": "source/core/markdown.js"
+          },
+          {
+            "type": "file",
+            "name": "router.js",
+            "path": "source/core/router.js"
+          },
+          {
+            "type": "file",
+            "name": "state.js",
+            "path": "source/core/state.js"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "features",
+        "path": "source/features",
+        "children": [
+          {
+            "type": "file",
+            "name": "blog.js",
+            "path": "source/features/blog.js"
+          },
+          {
+            "type": "file",
+            "name": "cards.js",
+            "path": "source/features/cards.js"
+          },
+          {
+            "type": "file",
+            "name": "chaos.js",
+            "path": "source/features/chaos.js"
+          },
+          {
+            "type": "file",
+            "name": "disclaimer.js",
+            "path": "source/features/disclaimer.js"
+          },
+          {
+            "type": "file",
+            "name": "facts.js",
+            "path": "source/features/facts.js"
+          },
+          {
+            "type": "file",
+            "name": "file-manager.js",
+            "path": "source/features/file-manager.js"
+          },
+          {
+            "type": "file",
+            "name": "particles.js",
+            "path": "source/features/particles.js"
+          }
+        ]
+      },
+      {
+        "type": "file",
+        "name": "file-manifest.json",
+        "path": "source/file-manifest.json"
+      },
+      {
+        "type": "folder",
+        "name": "pages",
+        "path": "source/pages",
+        "children": [
+          {
+            "type": "file",
+            "name": "behind-the-curtains.md",
+            "path": "source/pages/behind-the-curtains.md"
+          },
+          {
+            "type": "folder",
+            "name": "facts",
+            "path": "source/pages/facts",
+            "children": [
+              {
+                "type": "file",
+                "name": "armadillo.md",
+                "path": "source/pages/facts/armadillo.md"
+              },
+              {
+                "type": "file",
+                "name": "fact-color.md",
+                "path": "source/pages/facts/fact-color.md"
+              },
+              {
+                "type": "file",
+                "name": "fears.md",
+                "path": "source/pages/facts/fears.md"
+              },
+              {
+                "type": "file",
+                "name": "furry.md",
+                "path": "source/pages/facts/furry.md"
+              },
+              {
+                "type": "file",
+                "name": "knowledge.md",
+                "path": "source/pages/facts/knowledge.md"
+              },
+              {
+                "type": "file",
+                "name": "mediaconsumed.md",
+                "path": "source/pages/facts/mediaconsumed.md"
+              },
+              {
+                "type": "file",
+                "name": "names.md",
+                "path": "source/pages/facts/names.md"
+              },
+              {
+                "type": "file",
+                "name": "pt-br.md",
+                "path": "source/pages/facts/pt-br.md"
+              },
+              {
+                "type": "file",
+                "name": "sickness.md",
+                "path": "source/pages/facts/sickness.md"
+              },
+              {
+                "type": "file",
+                "name": "songinterest.md",
+                "path": "source/pages/facts/songinterest.md"
+              },
+              {
+                "type": "file",
+                "name": "whoisnico.md",
+                "path": "source/pages/facts/whoisnico.md"
+              }
+            ]
+          },
+          {
+            "type": "file",
+            "name": "feb10.md",
+            "path": "source/pages/feb10.md"
+          },
+          {
+            "type": "file",
+            "name": "feb13.md",
+            "path": "source/pages/feb13.md"
+          },
+          {
+            "type": "file",
+            "name": "feb5.md",
+            "path": "source/pages/feb5.md"
+          },
+          {
+            "type": "file",
+            "name": "feb9-and-ultimatum.md",
+            "path": "source/pages/feb9-and-ultimatum.md"
+          },
+          {
+            "type": "file",
+            "name": "home.md",
+            "path": "source/pages/home.md"
+          },
+          {
+            "type": "file",
+            "name": "index.json",
+            "path": "source/pages/index.json"
+          },
+          {
+            "type": "file",
+            "name": "jan21st.md",
+            "path": "source/pages/jan21st.md"
+          },
+          {
+            "type": "file",
+            "name": "jan22.md",
+            "path": "source/pages/jan22.md"
+          },
+          {
+            "type": "file",
+            "name": "jan27-rollback.md",
+            "path": "source/pages/jan27-rollback.md"
+          },
+          {
+            "type": "file",
+            "name": "jan27.md",
+            "path": "source/pages/jan27.md"
+          },
+          {
+            "type": "file",
+            "name": "jan28.md",
+            "path": "source/pages/jan28.md"
+          },
+          {
+            "type": "file",
+            "name": "january-20th.md",
+            "path": "source/pages/january-20th.md"
+          },
+          {
+            "type": "file",
+            "name": "rollback.md",
+            "path": "source/pages/rollback.md"
+          },
+          {
+            "type": "file",
+            "name": "update1.md",
+            "path": "source/pages/update1.md"
+          },
+          {
+            "type": "file",
+            "name": "update2.md",
+            "path": "source/pages/update2.md"
+          },
+          {
+            "type": "file",
+            "name": "update3.md",
+            "path": "source/pages/update3.md"
+          },
+          {
+            "type": "file",
+            "name": "website-2.0.md",
+            "path": "source/pages/website-2.0.md"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "name": "styling",
+        "path": "source/styling",
+        "children": [
+          {
+            "type": "file",
+            "name": "main.css",
+            "path": "source/styling/main.css"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "folder",
+    "name": "tooling",
+    "path": "tooling",
+    "children": [
+      {
+        "type": "file",
+        "name": "ftree.js",
+        "path": "tooling/ftree.js"
+      },
+      {
+        "type": "file",
+        "name": "genStructure.js",
+        "path": "tooling/genStructure.js"
+      }
+    ]
+  }
+]
